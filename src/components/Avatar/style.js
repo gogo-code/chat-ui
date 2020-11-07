@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components';
+import { circle } from 'utils/mixins';
 // 定义共用样式
-const circleMixinFunc = (color) => css`
+const circleMixinFunc = (color, size = '8px') => css`
   content: '';
+  display: block;
   position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: ${color};
+  ${circle(color, size)}
 `;
 // 头像自带的样式
 const StyledAvatar = styled.div`
@@ -20,15 +19,15 @@ const StatusIcon = styled.div`
   top: 4px;
   &::before {
     /* ${circleMixinFunc('white')} */
-    ${({size})=>circleMixinFunc("white",size)}
+    ${({ size }) => circleMixinFunc('white', size)}
     transform: scale(2);
   }
   &::after {
-    ${({ theme,status,size }) => {
-      if(status==="online"){
-        return circleMixinFunc(theme.green,size)
-      } else if(status==="offline"){
-        return circleMixinFunc(theme.gray,size)
+    ${({ theme, status, size }) => {
+      if (status === 'online') {
+        return circleMixinFunc(theme.green, size);
+      } else if (status === 'offline') {
+        return circleMixinFunc(theme.gray, size);
       }
     }}
   }
@@ -36,8 +35,8 @@ const StatusIcon = styled.div`
 
 //头像模板
 const AvatarClip = styled.div`
-  width: ${({size})=>size};
-  height: ${({size})=>size};
+  width: ${({ size }) => size};
+  height: ${({ size }) => size};
   border-radius: 50%;
   overflow: hidden;
 `;

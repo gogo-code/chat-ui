@@ -7,7 +7,7 @@ import React from "react";
 import <%= name %> from ".";
 
 export default {
-  title: "<%= name %>",
+  title: "UI 组件/<%= name %>",
   component: <%= name %>
 };
 
